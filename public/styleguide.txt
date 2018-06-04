@@ -1,0 +1,22 @@
+Primary [
+    50: #e3f3fe
+    200: #8eccff
+    400: #38a8ff
+    P500: #0099ff
+    700: #0478dd
+    900: #0248ac
+]
+
+Complementary [
+    200: #ffdc7e
+    500: #ffba00
+    P900: #ff6600
+]
+
+Error [
+    Error: #b00020
+]
+
+Font [
+    Roboto: @import url('https://fonts.googleapis.com/css?family=Roboto&subset=latin-ext');
+]

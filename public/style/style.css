@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&subset=latin-ext');
+
+body {
+    background-color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container {
+    margin: 0 auto;
+    display: block;
+    width: 1200px;
+}
+
+.menu-bar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 7px;
+    width: 100%;
+    background-color: #0099ff;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0 1px 5px 0 #c0c0c0;
+    -moz-box-shadow: 0 1px 5px 0 #c0c0c0;
+    box-shadow: 0 1px 5px 0 #c0c0c0;
+}
+
+.loader-menu-position {
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+}
+
+.logo {
+    display: flex;
+    justify-content: flex-start;
+    width: 15%;
+    overflow: hidden;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+}
+
+.avatar-menu {
+    display: flex;
+    justify-content: flex-end;
+    width: 15%;
+}
+
+.logo > span {
+    margin-right: 10px;
+    margin-top: 1px;
+    color: #fff;
+}
+
+.logo > a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.logo > a > h1 {
+    margin: 5px 0;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.search-form {
+    position: relative;
+    width: 85%;
+}
+
+.search-form > input {
+    border: 0;
+    padding: 12px 5px 12px 50px;
+    background-color: #0478dd;
+    color: #fff;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.search-form > input::placeholder {
+    color: #fff;
+}
+
+.search-form > label {
+    position: absolute;
+    left: 12px;
+    top: 7px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.search-form > input:focus ~ .search-list {
+    display: block;
+}
+
+.search-list {
+    position: absolute;
+    background-color: #fff;
+    display: none;
+    width: 100%;
+    padding: 5px 0;
+    z-index: 100;
+}
+
+.search-list > ol {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    color: #717171;
+    cursor: pointer;
+}
+
+.search-list > ol > li {
+    padding: 15px;
+    font-size: 14px;
+}
+
+.search-list > ol > li > span {
+    margin-right: 5px;
+}
+
+.search-list > ol > li:hover {
+    background-color: #f1f1f1;
+}

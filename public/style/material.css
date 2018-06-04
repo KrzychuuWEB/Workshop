@@ -1,0 +1,205 @@
+/* Material text field */
+    .material-field {
+        position: relative;
+        width: 100%;
+    }
+
+    .material-field > input[type="text"] {
+        position: relative;
+        z-index: 1;
+        background-color: transparent;
+        border: 0;
+        outline: 0;
+        padding: 10px 5px;
+        width: 100%;
+        color: #717171;
+        border-bottom: 2px solid #c0c0c0;
+        box-sizing: border-box;
+    }
+
+    .material-field > label {
+        position: absolute;
+        left: 4px;
+        top: 10px;
+        font-size: 16px;
+        color: #717171;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .field-underline {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #0099ff;
+        z-index: 2;
+        transform: scaleX(0);
+        transition: transform 0.4s;
+    }
+
+    .material-field > input[type="text"]:focus + .field-underline {
+        height: 2px;
+        transform: scaleX(1);
+    }
+
+    .material-field > input[type="text"]:focus ~ label {
+        color: #0099ff;
+        top: -10px;
+        font-size: 12px;
+    }
+
+    .material-field > input[type="text"]:valid ~ label {
+        top: -10px;
+        font-size: 12px;
+    }
+
+    .material-field > span {
+        display: none;
+    }
+
+    .wrong-field > input[type="text"] {
+        border-bottom: 2px solid #b00020!important;
+    }
+
+    .wrong-field > input[type="text"] + .field-underline {
+        display: none;
+    }
+
+    .wrong-field > input[type="text"]:focus ~ label {
+        color: #b00020;
+    }
+
+    .wrong-field > span {
+        display: block;
+        color: #b00020;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+/* Material text field */
+
+/* Material buttons  */
+    .material-button {
+        position: relative;
+        margin-top: 50px;
+        margin-left: 100px;
+        padding: 10px 15px;
+        border: 0;
+        outline: 0;
+        letter-spacing: 1px;
+        text-decoration: none;
+        border-radius: 4px;
+        overflow: hidden;
+        cursor: pointer;
+        font-weight: bold;
+        background-color: transparent;
+        text-transform: uppercase;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .text-button {
+        color: #0099ff;
+    }
+
+    .outline-button {
+        color: #0099ff;
+        border: 1px solid #c0c0c0;
+    }
+
+    .contained-button {
+        color: #fff;
+        background-color: #0099ff;
+    }
+
+    .text-button:hover,
+    .text-button:focus,
+    .outline-button:hover,
+    .outline-button:focus {
+        background-color: #e3f3fe;
+    }
+
+    .contained-button:hover,
+    .contained-button:focus {
+        background-color: #38a8ff;
+    }
+
+    .material-button-effect::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 15px;
+        background-color: rgb(255, 255, 255, 0.2);
+        transform: scale(0);
+        transition: transform 0.1s linear;
+    }
+
+    .material-button-effect:active::before {
+        transform: scale(2, 5);
+    }
+/* Material buttons  */
+
+/* Material box shadow */
+    .material-lower-shadow {
+        -webkit-box-shadow: 0 1px 2px 0 #717171;
+        -moz-box-shadow: 0 1px 2px 0 #717171;
+        box-shadow: 0 1px 2px 0 #717171;
+    }
+
+    .material-shadow {
+        -webkit-box-shadow: 0 0 2px 1px #717171;
+        -moz-box-shadow: 0 0 2px 1px #717171;
+        box-shadow: 0 0 2px 1px #717171;
+    }
+/* Material box shadow */
+
+/* Material loader */
+    .loader-container {
+        width: 100%;
+        height: 5px;
+        overflow: hidden;
+        z-index: 99;
+    }
+
+    .loader-bar {
+        height: 5px;
+        width: 100%;
+        background-color: #ff6600;
+        opacity: 0.3;
+    }
+
+    .loader-effect {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 30%;
+        height: 5px;
+        background-color: #ff6600;
+        animation: loader-effect 1.8s infinite;
+    }
+
+    @keyframes loader-effect {
+        from {
+            left: -10%;
+            width: 5%;
+        }
+        to {
+            left: 110%;
+            width: 100%;
+        }
+    }
+/* Material loader */
+
+/* Material click effect */
+    .material-click-effect {
+        cursor: pointer;
+        padding: 7px;
+        border-radius: 100%;
+        background-color: transparent;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    .material-click-effect:active {
+        background-color: #0478dd;
+    }
+/* Material click effect */
