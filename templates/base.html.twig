@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Database - {% block title %}Strona główna{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+        <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
         {% block stylesheets %}
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
             <link rel="stylesheet" href="{{ asset('style/material.css') }}">
@@ -15,8 +17,8 @@
                 <nav>
                     <div class="menu-bar flex">
                         <div class="logo">
-                            <span class="fas fa-bars fa-fw material-click-effect"></span>
-                            <a href="#"><h1>Strona główna</h1></a>
+                            <span class="fas fa-bars fa-fw material-click-effect click-effect-blue" id="open-menu-left"></span>
+                            <a href="#"><h1>{% block titleMenu %}Strona główna{% endblock %}</h1></a>
                         </div>
 
                         <div class="search-bar">
@@ -36,25 +38,48 @@
                         </div>
 
                         <div class="avatar-menu">
-                            b
+                            <span class="avatar" id="open-account-menu">
+                                K
+                            </span>
+
+                            <ol class="account-menu material-shadow">
+                                <li><a href="#" class="material-btn-effect"><span class="fas fa-user fa-fw"></span>Pokaż profil</a></li>
+                                <li><a href="#" class="material-btn-effect"><span class="fas fa-sign-out-alt fa-fw"></span>Wyloguj się</a></li>
+                            </ol>
                         </div>
 
-                        <div class="loader-container loader-menu-position" id="pre-loader">
-                            <div class="loader-bar"></div>
-                            <div class="loader-effect"></div>
+                        <div class="material-loader loader-menu-position" id="pre-loader">
+                            <div class="material-loader-bar"></div>
+                            <div class="material-loader-effect"></div>
                         </div>
+                    </div>
+
+                    <div class="menu-left material-shadow">
+                        <div></div>
+
+                        <ol>
+                            <li><a id="index-menu" href="{{ path('index') }}" class="material-btn-effect"><span class="fas fa-home fa-fw"></span>Strona główna</a></li>
+                            {#<li><a id="addcar-menu" href="{{ path('add_car') }}" class="material-btn-effect"><span class="fas fa-home fa-fw"></span>Strona główna</a></li>#}
+                        </ol>
+                    </div>
+
+                    <div class="material-floating-button position-fix-left">
+                        <a href="#" class="material-lower-shadow material-btn-effect"><span class="fas fa-plus fa-fw"></span></a>
                     </div>
                 </nav>
             </section>
         </header>
 
+        <main class="margin">
         {% block body %}
 
         {% endblock %}
+        </main>
 
         {% block javascripts %}
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <script src="{{ asset('library/preloader.js') }}"></script>
+            <script src="{{ asset('library/menu.js') }}"></script>
         {% endblock %}
     </body>
 </html>

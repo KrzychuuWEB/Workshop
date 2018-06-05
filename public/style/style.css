@@ -13,6 +13,10 @@ body {
     justify-content: space-between;
 }
 
+.margin {
+    margin-top: 70px;
+}
+
 .container {
     margin: 0 auto;
     display: block;
@@ -25,11 +29,12 @@ body {
     top: 0;
     padding: 7px;
     width: 100%;
+    z-index: 100;
     background-color: #0099ff;
     box-sizing: border-box;
-    -webkit-box-shadow: 0 1px 5px 0 #c0c0c0;
-    -moz-box-shadow: 0 1px 5px 0 #c0c0c0;
-    box-shadow: 0 1px 5px 0 #c0c0c0;
+    -webkit-box-shadow: 0 1px 10px 0 #717171;
+    -moz-box-shadow: 0 1px 10px 0 #717171;
+    box-shadow: 0 1px 10px 0 #717171;
 }
 
 .loader-menu-position {
@@ -55,6 +60,7 @@ body {
     display: flex;
     justify-content: flex-end;
     width: 15%;
+    position: relative;
 }
 
 .logo > span {
@@ -135,4 +141,91 @@ body {
 
 .search-list > ol > li:hover {
     background-color: #f1f1f1;
+}
+
+.avatar {
+    background-color: #000;
+    padding: 8px 13px;
+    border-radius: 100%;
+    margin-right: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.account-menu {
+    position: absolute;
+    z-index: 101;
+    top: 24px;
+    right: 10px;
+    display: none;
+    list-style-type: none;
+    padding: 5px 0;
+    background-color: #fff;
+}
+
+.account-menu > li > a {
+    display: block;
+    padding: 15px 10px;
+    color: #717171;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.account-menu > li > a:hover {
+    background-color: #f1f1f1;
+}
+
+.account-menu > li > a > span {
+    color: #0099ff;
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.menu-left {
+    position: fixed;
+    height: 97%;
+    bottom: 0;
+    left: -100%;
+    z-index: 98;
+    visibility: hidden;
+    transition: left 0.3s;
+}
+
+.menu-left > div {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 98;
+    background-color: #000;
+    opacity: 0.4;
+}
+
+.menu-left > ol {
+    position: fixed;
+    height: 100%;
+    width: 250px;
+    background-color: #fff;
+    z-index: 99;
+    padding: 20px 0 0 0;
+    list-style-type: none;
+}
+
+.menu-left > ol > li > a {
+    display: block;
+    color: #717171;
+    padding: 15px 10px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.menu-left > ol > li > a:hover {
+    background-color: #f1f1f1;
+}
+
+.menu-left > ol > li > a > span {
+    margin-right: 10px;
+    color: #0099ff;
 }

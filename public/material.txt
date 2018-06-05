@@ -11,9 +11,9 @@
 
 [ Material design button ]
 
-<button class="material-button text-button material-button-effect">button</button>
-<button class="material-button outline-button material-button-effect">button</button>
-<button class="material-button contained-button material-button-effect">button</button>
+<button class="material-button text-button material-btn-effect">button</button>
+<button class="material-button outline-button material-btn-effect">button</button>
+<button class="material-button contained-button material-btn-effect">button</button>
 
 -----------------------------
 
@@ -29,9 +29,9 @@
 
 [ Material design loader ]
 
-<div class="loader-container">
-    <div class="loader-bar"></div>
-    <div class="loader-effect"></div>
+<div class="material-loader">
+    <div class="material-loader-bar"></div>
+    <div class="material-loader-effect"></div>
 </div>
 
 -----------------------------
@@ -39,5 +39,14 @@
 [ Material design click effect ]
 
 <span class="fas fa-bars fa-fw material-click-effect"></span>
+
+-----------------------------
+
+[ Material design floating icon ]
+
+<div class="material-floating-button position-fix-left">
+     <a href="#" class="material-lower-shadow material-btn-effect"><span class="fas fa-home fa-fw"></span></a>
+    <button class="material-lower-shadow material-btn-effect"><span class="fas fa-home fa-fw"></span></button>
+</div>
 
 -----------------------------
