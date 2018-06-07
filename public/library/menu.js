@@ -10,6 +10,7 @@ $('#open-account-menu').click(function(e){
 });
 
 let open = false;
+let menuClick = false;
 
 $('#open-menu-left').click(function(e){
     e.stopPropagation();
@@ -36,6 +37,14 @@ $('#open-menu-left').click(function(e){
         open = false;
     });
 });
+
+$(".menu-left > ol").hover(
+    function() {
+        $(this).css('overflow', 'auto');
+    }, function() {
+        $(this).css('overflow', 'hidden');
+    }
+);
 
 let dataTitle = $('.container').data('title');
 let arrayTitle = [];

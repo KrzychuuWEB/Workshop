@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block title %}Przeglądanie profilu użytkownika{% endblock %}
+{% block titleMenu %}Profil użytkownika{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+
+            <h2 class="material-heading">Profil użytkownika {{ loadUser.username }}</h2>
+
+            <div class="read-date">
+                <div class="material-box box-flex box-size-70">
+                    <p>Nazwa użytkownika</p>
+                    <p>{{ loadUser.username }}</p>
+                </div>
+
+                <div class="material-box box-flex box-size-70">
+                    <p>Imię</p>
+                    <p>{{ loadUser.firstName }}</p>
+                </div>
+
+                <div class="material-box box-flex box-size-70">
+                    <p>Nazwisko</p>
+                    <p>{{ loadUser.lastName }}</p>
+                </div>
+
+                <div class="material-box box-flex box-size-70">
+                    <p>Stanowisko</p>
+                    <p>Mechanik</p>
+                </div>
+
+                <div class="material-box box-flex box-size-70">
+                    <p>Uprawnienia</p>
+                    <p>Admin</p>
+                </div>
+
+                {% if loadUser.username == app.user.username %}
+                <div class="material-floating-button">
+                    <button class="material-lower-shadow material-btn-effect"><span class="fas fa-pencil-alt fa-fw"></span></button>
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

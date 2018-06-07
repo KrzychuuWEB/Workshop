@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Admin
- * Date: 2018-06-04
- * Time: 15:46
+ * Date: 2018-06-06
+ * Time: 18:02
  */
 
 namespace App\Controller;
@@ -12,14 +12,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
-class IndexController extends Controller
+class CarController extends Controller
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/car/create", name="create_car")
      * @IsGranted("ROLE_USER")
      */
-    public function index()
+    public function create()
     {
-        return $this->render("index/index.html.twig");
+        return $this->render("car/create.html.twig");
     }
 }

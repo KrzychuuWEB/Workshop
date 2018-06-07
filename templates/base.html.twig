@@ -12,6 +12,7 @@
         {% endblock %}
     </head>
     <body>
+    {% block menu %}
         <header>
             <section>
                 <nav>
@@ -43,8 +44,10 @@
                             </span>
 
                             <ol class="account-menu material-shadow">
-                                <li><a href="#" class="material-btn-effect"><span class="fas fa-user fa-fw"></span>Pokaż profil</a></li>
-                                <li><a href="#" class="material-btn-effect"><span class="fas fa-sign-out-alt fa-fw"></span>Wyloguj się</a></li>
+                                <li><a href="#" class="material-btn-effect"><span class="fas fa-user fa-fw"></span>{{ app.user.username }}</a></li>
+                                <li><a href="#" class="material-btn-effect"><span class="fas fa-at fa-fw"></span>{{ app.user.email }}</a></li>
+                                <li><a href="#" class="material-btn-effect"><span class="fas fa-wrench fa-fw"></span>Mechanik</a></li>
+                                <li><a href="{{ path('logout') }}" class="material-btn-effect"><span class="fas fa-sign-out-alt fa-fw"></span>Wyloguj się</a></li>
                             </ol>
                         </div>
 
@@ -59,16 +62,25 @@
 
                         <ol>
                             <li><a id="index-menu" href="{{ path('index') }}" class="material-btn-effect"><span class="fas fa-home fa-fw"></span>Strona główna</a></li>
-                            {#<li><a id="addcar-menu" href="{{ path('add_car') }}" class="material-btn-effect"><span class="fas fa-home fa-fw"></span>Strona główna</a></li>#}
+                            <li><a id="createcar-menu" href="{{ path('create_car') }}" class="material-btn-effect"><span class="fas fa-home fa-fw"></span>Dodaj samochód</a></li>
+                            <li><span></span></li>
+                            <li><a href="{{ path('read_user', {'slug': app.user.username}) }}" class="material-btn-effect"><span class="fas fa-user fa-fw"></span>Pokaż mój profil</a></li>
+                            <li><a href="{{ path('create_car') }}" class="material-btn-effect"><span class="fas fa-cog fa-fw"></span>Ustawienia konta</a></li>
+                            <li><a href="{{ path('logout') }}" class="material-btn-effect"><span class="fas fa-sign-out-alt fa-fw"></span>Wyloguj się</a></li>
+                            <li><span></span></li>
+                            <li><footer>Copyright &copy; Database 2018</footer></li>
                         </ol>
                     </div>
 
+                    {% block floatingIcon %}
                     <div class="material-floating-button position-fix-left">
-                        <a href="#" class="material-lower-shadow material-btn-effect"><span class="fas fa-plus fa-fw"></span></a>
+                        <a href="{{ path('create_car') }}" class="material-lower-shadow material-btn-effect"><span class="fas fa-plus fa-fw"></span></a>
                     </div>
+                    {% endblock %}
                 </nav>
             </section>
         </header>
+    {% endblock %}
 
         <main class="margin">
         {% block body %}

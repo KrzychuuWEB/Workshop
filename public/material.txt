@@ -45,8 +45,36 @@
 [ Material design floating icon ]
 
 <div class="material-floating-button position-fix-left">
-     <a href="#" class="material-lower-shadow material-btn-effect"><span class="fas fa-home fa-fw"></span></a>
-    <button class="material-lower-shadow material-btn-effect"><span class="fas fa-home fa-fw"></span></button>
+     <a href="#" class="material-btn-effect"><span class="fas fa-home fa-fw"></span></a>
+    <button class="material-btn-effect"><span class="fas fa-home fa-fw"></span></button>
 </div>
+
+-----------------------------
+
+[ Material design box ]
+
+<div class="material-box box-flex box-size-70">
+    <p>Nazwa użytkownika</p>
+    <p>KrzychuuWEB</p>
+    <span class="fas fa-angle-right fa-fw material-click-effect click-effect-silver"></span>
+</div>
+
+-----------------------------
+
+[ Material design modal ]
+
+<div class="material-modal">
+    <div class="modal-box">
+        <div class="mini-modal-content">
+            <h5>Test modal</h5>
+            <p>Testowy modal który trzeba wytestować, bo jeżeli nie to nie będzie dobrze działać!</p>
+            <div class="modal-button">
+                <button class="material-button text-button material-btn-effect">Anuluj</button>
+                <button class="material-button text-button material-btn-effect">Akceptuj</button>
+            </div>
+        </div>
+     </div>
+</div>
+
 
 -----------------------------
