@@ -6,28 +6,39 @@
     <section>
         <div class="container">
 
-            <div class="material-box login-size-40">
-                <form class="login-form" method="post" action="{{ path('login') }}">
-                    <h5><span>TBEsoftware</span>Database</h5>
-                    <div class="material-field {% if error %}wrong-field{% endif %}">
-                        <input type="text" required autocomplete="off" value="{{ last_username }}" name="_username">
-                        <div class="field-underline"></div>
-                        <label>Login</label>
-                        <span>Wprowadzony login lub hasło jest nieprawidłowe</span>
-                    </div>
-                    <div class="material-field {% if error %}wrong-field{% endif %}">
-                        <input type="password" required name="_password">
-                        <div class="field-underline"></div>
-                        <label>Hasło</label>
-                        <span>Wprowadzony login lub hasło jest nieprawidłowe</span>
-                    </div>
+            <div class="login-position-loader">
+                <div class="material-loader" id="login-loader">
+                    <div class="material-loader-bar"></div>
+                    <div class="material-loader-effect"></div>
+                </div>
+                <div class="material-box login-size-40">
+                    <form class="login-form" method="post" action="{{ path('login') }}">
+                        <h5><span>TBEsoftware</span>Database</h5>
+                        <div class="material-field {% if error %}wrong-field{% endif %}">
+                            <input type="text" required autocomplete="off" value="{{ last_username }}" name="_username" id="username">
+                            <div class="field-underline"></div>
+                            <label>Login</label>
+                            <span>Wprowadzony login lub hasło jest nieprawidłowe</span>
+                        </div>
+                        <div class="material-field {% if error %}wrong-field{% endif %}">
+                            <input type="password" required name="_password" id="password">
+                            <div class="field-underline"></div>
+                            <label>Hasło</label>
+                            <span>Wprowadzony login lub hasło jest nieprawidłowe</span>
+                        </div>
 
-                    <div class="login-btn-flex">
-                        <button class="material-button contained-button material-btn-effect material-lower-shadow">Zaloguj</button>
-                    </div>
-                </form>
+                        <div class="login-btn-flex">
+                            <button id="login-button" class="material-button contained-button material-btn-effect material-lower-shadow">Zaloguj</button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
         </div>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('library/login.js') }}"></script>
 {% endblock %}

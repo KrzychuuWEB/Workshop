@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+{% block title %}Edycja profilu użytkownika{% endblock %}
+{% block titleMenu %}Edycja profilu{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+
+            <h2 class="material-heading">Edycja profilu użytkownika {{ user.username }}</h2>
+
+            <form>
+                <div class="update-data">
+                    {% block floatingIcon %}
+                        <div class="material-floating-button position-fix-left">
+                            <button class="material-lower-shadow material-btn-effect"><span class="fas fa-save fa-fw"></span></button>
+                        </div>
+                    {% endblock %}
+                    <div class="material-box box-flex box-size-70">
+                        <p>Nazwa użytkownika</p>
+                        <p>{{ user.username }}</p>
+                        <span class="fas fa-angle-right fa-fw material-click-effect click-effect-silver"></span>
+                    </div>
+
+                    <div class="material-box box-flex box-size-70">
+                        <p>Imię</p>
+                        <p>{{ user.firstName }}</p>
+                        <span class="fas fa-angle-right fa-fw material-click-effect click-effect-silver"></span>
+                    </div>
+
+                    <div class="material-box box-flex box-size-70">
+                        <p>Nazwisko</p>
+                        <p>{{ user.lastName }}</p>
+                        <span class="fas fa-angle-right fa-fw material-click-effect click-effect-silver"></span>
+                    </div>
+
+                    <div class="material-box box-flex box-size-70">
+                        <p>Stanowisko</p>
+                        <p>{{ user.position.name }}</p>
+                        <span class="fas fa-angle-right fa-fw material-click-effect click-effect-silver"></span>
+                    </div>
+
+                    <div class="material-box box-flex box-size-70">
+                        <p>Uprawnienia</p>
+                        <p>
+                            {% for role in user.roles %}
+                                {{ role|slice(5)|lower|capitalize }}
+                            {% endfor %}
+                        </p>
+                        <span class="fas fa-angle-right fa-fw material-click-effect click-effect-silver"></span>
+                    </div>
+
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <div class="material-floating-button">
+                            <button id="delete-button" class="material-btn-effect"><span class="fas fa-trash-alt fa-fw"></span></button>
+                        </div>
+
+                        <div class="material-modal" id="modal-delete-user">
+                            <div class="modal-box">
+                                <div class="mini-modal-content">
+                                    <h5>Czy chcesz usunąć użytkownika?</h5>
+                                    <p>Akcja usuwania użytkownika jest nieodwracalna, jeżeli usuniesz użytkownika nie będziesz mógł go przywrócić!</p>
+                                    <div class="modal-button">
+                                        <button id="cancel-delete" class="material-button text-button material-btn-effect">Anuluj</button>
+                                        <a href="{{ path('delete_user', {'slug': user.username}) }}" class="material-button text-button material-btn-effect">Akceptuj</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </form>
+
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('library/deleteUser.js') }}"></script>
+{% endblock %}

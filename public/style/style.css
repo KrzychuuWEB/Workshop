@@ -213,6 +213,14 @@ body {
     list-style-type: none;
 }
 
+.menu-left > ol::-webkit-scrollbar {
+    width: 8px;
+}
+
+.menu-left > ol::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+}
+
 .menu-left > ol > li > a {
     display: block;
     color: #717171;
@@ -247,9 +255,20 @@ body {
 }
 
 /* Login */
-.login-size-40 {
+.login-position-loader {
+    position: relative;
     width: 40%;
     margin: 250px auto 0 auto;
+}
+
+.login-position-loader .material-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.login-size-40 {
     border-radius: 2px;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -282,26 +301,36 @@ body {
 }
 /* Login */
 
-/* Read data */
-.read-date {
+/* Data */
+.read-data,
+.update-data {
     position: relative;
 }
 
-.read-date .material-box {
+.read-data .material-box
+{
     padding: 20px;
 }
 
-.read-date .material-floating-button {
+.update-data .material-box {
+    padding: 16px;
+}
+
+.read-data .material-floating-button,
+.update-data .material-floating-button {
     position: absolute;
     left: 50%;
     bottom: -25px;
 }
 
-.read-date .material-floating-button > button {
+.read-data .material-floating-button > a,
+.update-data .material-floating-button > button
+{
     background-color: #0099ff;
 }
 
-.read-date .material-floating-button > button:hover {
+.read-data .material-floating-button > a:hover,
+.update-data .material-floating-button > button:hover {
     background-color: #38a8ff;
 }
-/* Read data */
+/* Data */

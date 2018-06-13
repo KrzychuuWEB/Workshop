@@ -1,15 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Admin
- * Date: 2018-06-06
- * Time: 21:18
- */
 
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use App\Entity\Permission;
 
 /**
  * @ORM\Table(name="app_users")
@@ -18,11 +13,23 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User implements UserInterface, \Serializable
 {
     /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Position", inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $position;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Permission", inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $permission;
 
     /**
      * @ORM\Column(type="string", length=25, unique=true)
@@ -45,22 +52,37 @@ class User implements UserInterface, \Serializable
     private $firstName;
 
     /**
-     * @ORM\Column(name="last_name", type="string", length=50)
+     * @ORM\Column(name="last_name", type="string", length=100)
      */
     private $lastName;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Position")
-     * @ORM\JoinColumn(name="position_id", referencedColumnName="id")
-     */
-    private $positionId;
-
-    /**
-     * @return mixed
-     */
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getPosition(): ?Position
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?Position $position): self
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    public function getPermission(): ?Permission
+    {
+        return $this->permission;
+    }
+
+    public function setPermission(?Permission $permission): self
+    {
+        $this->permission = $permission;
+
+        return $this;
     }
 
     /**
@@ -145,7 +167,12 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return array('ROLE_'.$this->getPermission()->getName());
+    }
+
+    public function setRoles($role)
+    {
+        $this->permission = $role;
     }
 
     public function getSalt()

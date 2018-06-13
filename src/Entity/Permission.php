@@ -7,10 +7,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="app_position")
- * @ORM\Entity(repositoryClass="App\Repository\PositionRepository")
+ * @ORM\Table(name="app_permission")
+ * @ORM\Entity(repositoryClass="App\Repository\PermissionRepository")
  */
-class Position
+class Permission
 {
     /**
      * @ORM\Id()
@@ -20,12 +20,12 @@ class Position
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=20)
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="position")
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="permission")
      */
     private $users;
 
@@ -63,7 +63,7 @@ class Position
     {
         if (!$this->users->contains($user)) {
             $this->users[] = $user;
-            $user->setPosition($this);
+            $user->setPermission($this);
         }
 
         return $this;
@@ -74,8 +74,8 @@ class Position
         if ($this->users->contains($user)) {
             $this->users->removeElement($user);
             // set the owning side to null (unless already changed)
-            if ($user->getPosition() === $this) {
-                $user->setPosition(null);
+            if ($user->getPermission() === $this) {
+                $user->setPermission(null);
             }
         }
 

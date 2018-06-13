@@ -4,40 +4,48 @@
 
 {% block body %}
     <section>
-        <div class="container">
+        <div class="container"{% if user.username == app.user.username %}data-title="showProfil-menu"{% endif %}>
 
-            <h2 class="material-heading">Profil użytkownika {{ loadUser.username }}</h2>
+            <h2 class="material-heading">Profil użytkownika {{ user.username }}</h2>
 
-            <div class="read-date">
+            <div class="read-data">
                 <div class="material-box box-flex box-size-70">
                     <p>Nazwa użytkownika</p>
-                    <p>{{ loadUser.username }}</p>
+                    <p>{{ user.username }} {% if is_granted('ROLE_ADMIN') %}[ ID: {{ user.id }} ]{% endif %}</p>
                 </div>
 
                 <div class="material-box box-flex box-size-70">
                     <p>Imię</p>
-                    <p>{{ loadUser.firstName }}</p>
+                    <p>{{ user.firstName }}</p>
                 </div>
 
                 <div class="material-box box-flex box-size-70">
                     <p>Nazwisko</p>
-                    <p>{{ loadUser.lastName }}</p>
+                    <p>{{ user.lastName }}</p>
                 </div>
 
                 <div class="material-box box-flex box-size-70">
                     <p>Stanowisko</p>
-                    <p>Mechanik</p>
+                    <p>{{ user.position.name }}</p>
                 </div>
 
                 <div class="material-box box-flex box-size-70">
                     <p>Uprawnienia</p>
-                    <p>Admin</p>
+                    <p>
+                        {% for role in user.roles %}
+                            {{ role|slice(5)|lower|capitalize }}
+                        {% endfor %}
+                    </p>
                 </div>
 
-                {% if loadUser.username == app.user.username %}
-                <div class="material-floating-button">
-                    <button class="material-lower-shadow material-btn-effect"><span class="fas fa-pencil-alt fa-fw"></span></button>
-                </div>
+                {% if user.username == app.user.username %}
+                    <div class="material-floating-button">
+                        <a href="{{ path('update_user', {'slug': user.username}) }}" class="material-btn-effect"><span class="fas fa-pencil-alt fa-fw"></span></a>
+                    </div>
+                {% elseif is_granted('ROLE_ADMIN')%}
+                    <div class="material-floating-button">
+                        <a href="{{ path('update_user', {'slug': user.username}) }}" class="material-btn-effect"><span class="fas fa-pencil-alt fa-fw"></span></a>
+                    </div>
                 {% endif %}
             </div>
 

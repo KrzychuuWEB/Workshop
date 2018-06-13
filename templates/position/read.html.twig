@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block title %}Wszystkie stanowiska{% endblock %}
+{% block titleMenu %}Stanowiska{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container" data-title="positions-menu">
+
+            <h2 class="material-heading">Wyświetl wszystkie stanowiska</h2>
+
+            {% block floatingIcon %}
+                <div class="material-floating-button position-fix-left">
+                    <a href="{{ path('create_position') }}" class="material-lower-shadow material-btn-effect"><span class="fas fa-plus fa-fw"></span></a>
+                </div>
+            {% endblock %}
+
+            <div class="read-data">
+                {% for pos in position %}
+                    <div class="material-box box-flex box-size-70">
+                        <p>Nazwa stanowiska</p>
+                        <p>{{ pos.name }} [ ID: {{ pos.id }} ]</p>
+                        <span id="delete-position{{ pos.id }}" class="fas fa-times fa-fw material-click-effect click-effect-silver"></span>
+                    </div>
+
+                    <div class="material-modal" id="modal-delete-position{{ pos.id }}">
+                        <div class="modal-box">
+                            <div class="mini-modal-content">
+                                <h5>Czy chcesz usunąć stanowisko {{ pos.name }}</h5>
+                                <p>Akcja usuwania stanowika jest nieodwracalna, jeżeli usuniesz stanowisko nie będziesz mógł go przywrócić!</p>
+                                <div class="modal-button">
+                                    <button class="cancel-delete material-button text-button material-btn-effect">Anuluj</button>
+                                    <a href="{{ path('delete_position', {'slug': pos.id}) }}" class="material-button text-button material-btn-effect">Akceptuj</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('library/positionModal.js') }}"></script>
+{% endblock %}

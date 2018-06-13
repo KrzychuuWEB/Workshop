@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %}Dodawanie nowego użytkownika{% endblock %}
+{% block titleMenu %}Dodaj użytkownika{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container" data-title="createuser-menu">
+
+            <h2 class="material-heading">Dodaj nowego użytkownika</h2>
+
+            {{ form_start(form) }}
+            {% form_theme form 'form/fields.html.twig' %}
+
+            {% block floatingIcon %}
+                <div class="material-floating-button position-fix-left">
+                    <button class="material-lower-shadow material-btn-effect"><span class="fas fa-save fa-fw"></span></button>
+                </div>
+            {% endblock %}
+            {{ form_end(form) }}
+
+        </div>
+    </section>
+{% endblock %}

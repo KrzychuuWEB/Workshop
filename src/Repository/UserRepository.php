@@ -1,13 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Admin
- * Date: 2018-06-06
- * Time: 21:27
- */
 
 namespace App\Repository;
 
+use App\Entity\User;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 
@@ -16,9 +11,12 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
     public function loadUserByUsername($username)
     {
         return $this->createQueryBuilder('u')
-            ->where('u.username = :username OR u.email = :email')
+            ->innerJoin("u.position", "p")
+            ->innerJoin("u.permission", "a")
+            ->addSelect("p")
+            ->addSelect('a')
+            ->where('u.username = :username')
             ->setParameter('username', $username)
-            ->setParameter('email', $username)
             ->getQuery()
             ->getOneOrNullResult();
     }

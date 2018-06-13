@@ -62,9 +62,15 @@
 
                         <ol>
                             <li><a id="index-menu" href="{{ path('index') }}" class="material-btn-effect"><span class="fas fa-home fa-fw"></span>Strona główna</a></li>
-                            <li><a id="createcar-menu" href="{{ path('create_car') }}" class="material-btn-effect"><span class="fas fa-home fa-fw"></span>Dodaj samochód</a></li>
+                            <li><a id="createcar-menu" href="{{ path('create_car') }}" class="material-btn-effect"><span class="fas fa-plus fa-fw"></span>Dodaj samochód</a></li>
                             <li><span></span></li>
-                            <li><a href="{{ path('read_user', {'slug': app.user.username}) }}" class="material-btn-effect"><span class="fas fa-user fa-fw"></span>Pokaż mój profil</a></li>
+                            {% if is_granted('ROLE_ADMIN') %}
+                            <li><a id="createuser-menu" href="{{ path('create_user') }}" class="material-btn-effect"><span class="fas fa-user-plus fa-fw"></span>Dodaj użytkownika</a></li>
+                            <li><a href="{{ path('create_user') }}" class="material-btn-effect"><span class="fas fa-user-edit fa-fw"></span>Edytuj użytkownika</a></li>
+                            <li><a id="positions-menu" href="{{ path('read_position') }}" class="material-btn-effect"><span class="fas fa-briefcase fa-fw"></span>Pokaż stanowiska</a></li>
+                            <li><span></span></li>
+                            {% endif %}
+                            <li><a id="showProfil-menu" href="{{ path('read_user', {'slug': app.user.username}) }}" class="material-btn-effect"><span class="fas fa-user fa-fw"></span>Pokaż mój profil</a></li>
                             <li><a href="{{ path('create_car') }}" class="material-btn-effect"><span class="fas fa-cog fa-fw"></span>Ustawienia konta</a></li>
                             <li><a href="{{ path('logout') }}" class="material-btn-effect"><span class="fas fa-sign-out-alt fa-fw"></span>Wyloguj się</a></li>
                             <li><span></span></li>
@@ -92,6 +98,7 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <script src="{{ asset('library/preloader.js') }}"></script>
             <script src="{{ asset('library/menu.js') }}"></script>
+            <script src="{{ asset('library/fields.js') }}"></script>
         {% endblock %}
     </body>
 </html>

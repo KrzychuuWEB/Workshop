@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %}Dodawanie stanowiska{% endblock %}
+{% block titleMenu %}Dodawanie stanowiska{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+
+            <h2 class="material-heading">Dodaj nową pozycję</h2>
+
+            {{ form_start(form) }}
+            {% form_theme form 'form/fields.html.twig' %}
+
+            {% block floatingIcon %}
+                <div class="material-floating-button position-fix-left">
+                    <button class="material-lower-shadow material-btn-effect"><span class="fas fa-save fa-fw"></span></button>
+                </div>
+            {% endblock %}
+            {{ form_end(form) }}
+
+        </div>
+    </section>
+{% endblock %}
