@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %}Użytkownicy{% endblock %}
+{% block titleMenu %}Użytkownicy{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+
+            <h2 class="material-heading">Lista użytkowników</h2>
+
+            <div class="read-data">
+                {% for user in allUser %}
+                    <div class="material-box box-flex box-size-70">
+                        <p>Nazwa użytkownika</p>
+                        <p>{{ user.username }}</p>
+                        <a href="{{ path('update_user', {'slug': user.username}) }}"><span class="fas fa-user-edit fa-fw material-click-effect click-effect-silver"></span></a>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

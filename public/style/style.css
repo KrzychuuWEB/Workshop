@@ -274,14 +274,14 @@ body {
     padding-bottom: 25px;
 }
 
-.login-form > h5 {
+.login-form h5 {
     color: #0099ff;
     margin: 0 10px;
     font-weight: normal;
     font-size: 18px;
 }
 
-.login-form > h5 > span {
+.login-form h5 > span {
     font-weight: bold;
     font-size: 22px;
 }
@@ -296,7 +296,7 @@ body {
     justify-content: flex-end;
 }
 
-.login-btn-flex > button {
+.login-btn-flex button {
     margin-right: 35px;
 }
 /* Login */

@@ -33,8 +33,8 @@ class UserAddType extends AbstractType
                 'first_options'  => ['label' => 'Hasło'],
                 'second_options' => ['label' => 'Powtórz Hasło'],
             ])
-            ->add('lastName', TextType::class, ['label' => 'Imię'])
-            ->add('firstName', TextType::class, ['label' => 'Nazwisko'])
+            ->add('firstName', TextType::class, ['label' => 'Imię'])
+            ->add('lastName', TextType::class, ['label' => 'Nazwisko'])
             ->add('position', EntityType::class, [
                 'class' => Position::class,
                 'query_builder' => function(EntityRepository $er)

@@ -1,15 +1,12 @@
 {% block form_row %}
     {% spaceless %}
-        <div class="box-size-70">
-            <div class="material-box">
-                <div class="material-field">
-                    {{ form_widget(form) }}
-                    <div class="field-underline"></div>
-                    {{ form_label(form) }}
-                    <span>Wpisane hasło jest nieprawidłowe</span>
-                </div>
+        <div class="material-box">
+            <div class="material-field">
+                {{ form_widget(form) }}
+                <div class="field-underline"></div>
+                {{ form_label(form) }}
+                <span>Wpisane hasło jest nieprawidłowe</span>
             </div>
         </div>
-
     {% endspaceless %}
 {% endblock form_row %}

@@ -6,233 +6,105 @@
     <section>
         <div class="container" data-title="createcar-menu">
 
-            <form>
-                {% block floatingIcon %}
-                    <div class="material-floating-button position-fix-left">
-                        <button class="material-lower-shadow material-btn-effect"><span class="fas fa-save fa-fw"></span></button>
-                    </div>
-                {% endblock %}
+            <h2 class="material-heading">Dodaj nowy samochód</h2>
 
-                <div class="box-flex box-size-3">
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="date" required value="{{ "now"|date("Y-d-m") }}">
-                            <div class="field-underline"></div>
-                            <label>Data dodania samochodu</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
-                    </div>
+            {{ form_start(form) }}
+            {% form_theme form 'form/fields.html.twig' %}
 
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="time" required value="{{ "now"|date("H:i") }}">
-                            <div class="field-underline"></div>
-                            <label>Godzina dodania samochodu</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
-                    </div>
+            {% block floatingIcon %}
+                <div class="material-floating-button position-fix-left">
+                    <button class="material-lower-shadow material-btn-effect"><span class="fas fa-save fa-fw"></span></button>
+                </div>
+            {% endblock %}
 
-                    <div class="material-box">
-                        <div class="material-field">
-                            <select>
-                                <option selected>Osobowy</option>
-                                <option>Motocykl</option>
-                                <option>Dostawczy</option>
-                                <option>Ciężarowy</option>
-                                <option>Rolniczy</option>
-                                <option>Budowlany</option>
-                            </select>
-                            <div class="field-underline"></div>
-                            <label>Typ pojazdu</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
+            <div class="box-flex box-size-3">
+                {{ form_row(form.dateAdd, {'attr': {'value': "now"|date("Y-m-d") }}) }}
+                {{ form_row(form.timeAdd, {'attr': {'value': "now"|date('H:i')}}) }}
+                {{ form_row(form.vehicleType) }}
+            </div>
+
+            <div class="box-flex box-size-4">
+                <div class="material-box">
+                    <div class="material-field">
+                        <input type="text" required>
+                        <div class="field-underline"></div>
+                        <label>Imię</label>
+                        <span>Wpisane hasło jest nieprawidłowe</span>
                     </div>
                 </div>
 
-                <div class="box-flex box-size-4">
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="text" required>
-                            <div class="field-underline"></div>
-                            <label>Imię</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
-                    </div>
-
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="text" required>
-                            <div class="field-underline"></div>
-                            <label>Nazwisko</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
-                    </div>
-
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="number" required>
-                            <div class="field-underline"></div>
-                            <label>Numer telefonu</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
-                    </div>
-
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="text" required>
-                            <div class="field-underline"></div>
-                            <label>Kod pocztowy</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
+                <div class="material-box">
+                    <div class="material-field">
+                        <input type="text" required>
+                        <div class="field-underline"></div>
+                        <label>Nazwisko</label>
+                        <span>Wpisane hasło jest nieprawidłowe</span>
                     </div>
                 </div>
 
-                <div class="box-flex box-size-2">
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="email" required>
-                            <div class="field-underline"></div>
-                            <label>Adres email</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
-                    </div>
-
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="text" required>
-                            <div class="field-underline"></div>
-                            <label>Adres zamieszkania</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
+                <div class="material-box">
+                    <div class="material-field">
+                        <input type="number" required>
+                        <div class="field-underline"></div>
+                        <label>Numer telefonu</label>
+                        <span>Wpisane hasło jest nieprawidłowe</span>
                     </div>
                 </div>
 
-                <div class="box-flex box-size-3">
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="text" required>
-                            <div class="field-underline"></div>
-                            <label>Marka</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
+                <div class="material-box">
+                    <div class="material-field">
+                        <input type="text" required>
+                        <div class="field-underline"></div>
+                        <label>Kod pocztowy</label>
+                        <span>Wpisane hasło jest nieprawidłowe</span>
                     </div>
+                </div>
+            </div>
 
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="text" required>
-                            <div class="field-underline"></div>
-                            <label>Model</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
-                    </div>
-
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="text" required>
-                            <div class="field-underline"></div>
-                            <label>Rejestracja</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
+            <div class="box-flex box-size-2">
+                <div class="material-box">
+                    <div class="material-field">
+                        <input type="email" required>
+                        <div class="field-underline"></div>
+                        <label>Adres email</label>
+                        <span>Wpisane hasło jest nieprawidłowe</span>
                     </div>
                 </div>
 
-                <div class="box-flex box-size-2">
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="text" required>
-                            <div class="field-underline"></div>
-                            <label>Numer silnika</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
-                    </div>
-
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="text" required>
-                            <div class="field-underline"></div>
-                            <label>Numer nadwozia</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
+                <div class="material-box">
+                    <div class="material-field">
+                        <input type="text" required>
+                        <div class="field-underline"></div>
+                        <label>Adres zamieszkania</label>
+                        <span>Wpisane hasło jest nieprawidłowe</span>
                     </div>
                 </div>
+            </div>
 
-                <div class="box-flex box-size-4">
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="text" required>
-                            <div class="field-underline"></div>
-                            <label>Pojemność</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
-                    </div>
+            <div class="box-flex box-size-3">
+                {{ form_row(form.mark) }}
+                {{ form_row(form.model) }}
+                {{ form_row(form.registration) }}
+            </div>
 
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="text" required>
-                            <div class="field-underline"></div>
-                            <label>Moc silnika</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
-                    </div>
+            <div class="box-flex box-size-2">
+                {{ form_row(form.engineNumber) }}
+                {{ form_row(form.bodyNumber) }}
+            </div>
 
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="number" required>
-                            <div class="field-underline"></div>
-                            <label>Rok produkcji</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
-                    </div>
+            <div class="box-flex box-size-4">
+                {{ form_row(form.capacity) }}
+                {{ form_row(form.enginePower) }}
+                {{ form_row(form.productionYear, {'attr': {'value': '2000-01-01'}}) }}
+                {{ form_row(form.fuelCondition) }}
+            </div>
 
-                    <div class="material-box">
-                        <div class="material-field">
-                            <input type="number" required>
-                            <div class="field-underline"></div>
-                            <label>Stan paliwa</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="box-flex box-size-3">
-                    <div class="material-box">
-                        <div class="material-field">
-                            <select>
-                                <option>Tak</option>
-                                <option>Nie</option>
-                            </select>
-                            <div class="field-underline"></div>
-                            <label>Zgoda na jazdę próbną</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
-                    </div>
-
-                    <div class="material-box">
-                        <div class="material-field">
-                            <select>
-                                <option>Tak</option>
-                                <option>Nie</option>
-                            </select>
-                            <div class="field-underline"></div>
-                            <label>Ubezpieczenia OC</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
-                    </div>
-
-                    <div class="material-box">
-                        <div class="material-field">
-                            <select>
-                                <option>Tak</option>
-                                <option>Nie</option>
-                            </select>
-                            <div class="field-underline"></div>
-                            <label>Książeczka przeglądów i napraw</label>
-                            <span>Wpisane hasło jest nieprawidłowe</span>
-                        </div>
-                    </div>
-                </div>
-
-            </form>
+            <div class="box-flex box-size-3">
+                {{ form_row(form.testDrive) }}
+                {{ form_row(form.insuranceOC) }}
+                {{ form_row(form.repairBook) }}
+            </div>
+            {{ form_end(form) }}
 
         </div>
     </section>

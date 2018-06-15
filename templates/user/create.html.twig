@@ -11,6 +11,16 @@
             {{ form_start(form) }}
             {% form_theme form 'form/fields.html.twig' %}
 
+            <div class="box-size-70">
+                {{ form_row(form.username) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.password) }}
+                {{ form_row(form.firstName) }}
+                {{ form_row(form.lastName) }}
+                {{ form_row(form.position) }}
+                {{ form_row(form.permission) }}
+            </div>
+
             {% block floatingIcon %}
                 <div class="material-floating-button position-fix-left">
                     <button class="material-lower-shadow material-btn-effect"><span class="fas fa-save fa-fw"></span></button>

@@ -11,6 +11,10 @@
             {{ form_start(form) }}
             {% form_theme form 'form/fields.html.twig' %}
 
+            <div class="box-size-70">
+                {{ form_row(form.name) }}
+            </div>
+
             {% block floatingIcon %}
                 <div class="material-floating-button position-fix-left">
                     <button class="material-lower-shadow material-btn-effect"><span class="fas fa-save fa-fw"></span></button>

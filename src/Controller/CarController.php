@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Form\Type\CarAddType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,6 +21,10 @@ class CarController extends Controller
      */
     public function create()
     {
-        return $this->render("car/create.html.twig");
+        $form = $this->createForm(CarAddType::class);
+
+        return $this->render("car/create.html.twig", [
+            'form' => $form->createView(),
+        ]);
     }
 }

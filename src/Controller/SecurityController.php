@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +33,8 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/register", name="register")
+     * @Route("/password", name="pass_hash")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function register(UserPasswordEncoderInterface $encoder)
     {
@@ -42,7 +44,6 @@ class SecurityController extends Controller
 
         return new Response($encoded);
     }
-
 
     /**
      * @Route("/logout", name="logout")

@@ -9,7 +9,8 @@
 namespace App\Controller;
 
 use App\Entity\Position;
-use App\Form\Type\AddPositionType;
+use App\Form\Type\PositionAddType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,10 +19,11 @@ class PositionController extends Controller
 {
     /**
      * @Route("/position/create", name="create_position")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function create(Request $request)
     {
-        $form = $this->createForm(AddPositionType::class);
+        $form = $this->createForm(PositionAddType::class);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
@@ -41,6 +43,7 @@ class PositionController extends Controller
 
     /**
      * @Route("/position", name="read_position")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function read()
     {
@@ -57,6 +60,7 @@ class PositionController extends Controller
 
     /**
      * @Route("/position/{slug}/delete", name="delete_position")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete($slug)
     {

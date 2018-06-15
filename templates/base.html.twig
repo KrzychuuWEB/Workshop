@@ -66,7 +66,7 @@
                             <li><span></span></li>
                             {% if is_granted('ROLE_ADMIN') %}
                             <li><a id="createuser-menu" href="{{ path('create_user') }}" class="material-btn-effect"><span class="fas fa-user-plus fa-fw"></span>Dodaj użytkownika</a></li>
-                            <li><a href="{{ path('create_user') }}" class="material-btn-effect"><span class="fas fa-user-edit fa-fw"></span>Edytuj użytkownika</a></li>
+                            <li><a href="{{ path('all_users') }}" class="material-btn-effect"><span class="fas fa-user-edit fa-fw"></span>Edytuj użytkownika</a></li>
                             <li><a id="positions-menu" href="{{ path('read_position') }}" class="material-btn-effect"><span class="fas fa-briefcase fa-fw"></span>Pokaż stanowiska</a></li>
                             <li><span></span></li>
                             {% endif %}

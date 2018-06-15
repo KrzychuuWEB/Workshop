@@ -19,6 +19,23 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserController extends Controller
 {
     /**
+     * @Route("/users/", name="all_users")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function getAll()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $em
+            ->getRepository(User::class)
+            ->findAll();
+
+        return $this->render("user/all.html.twig", [
+            'allUser' => $user,
+        ]);
+    }
+
+    /**
      * @Route("/user/create", name="create_user")
      * @IsGranted("ROLE_ADMIN")
      */
@@ -37,7 +54,7 @@ class UserController extends Controller
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('read_user', ['slug' => $loginForm]);
+            return $this->redirectToRoute('all_users');
         }
 
         return $this->render("user/create.html.twig", [

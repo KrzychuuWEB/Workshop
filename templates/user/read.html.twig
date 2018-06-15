@@ -8,6 +8,12 @@
 
             <h2 class="material-heading">Profil użytkownika {{ user.username }}</h2>
 
+            {% block floatingIcon %}
+                <div class="material-floating-button position-fix-left">
+                    <a href="{{ path('create_user') }}" class="material-lower-shadow material-btn-effect"><span class="fas fa-plus fa-fw"></span></a>
+                </div>
+            {% endblock %}
+
             <div class="read-data">
                 <div class="material-box box-flex box-size-70">
                     <p>Nazwa użytkownika</p>
