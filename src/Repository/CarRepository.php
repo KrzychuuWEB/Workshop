@@ -19,6 +19,16 @@ class CarRepository extends ServiceEntityRepository
         parent::__construct($registry, Car::class);
     }
 
+    public function findByRegistration($registration)
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.registration = :registration')
+            ->setParameter('registration', $registration)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
 //    /**
 //     * @return Car[] Returns an array of Car objects
 //     */

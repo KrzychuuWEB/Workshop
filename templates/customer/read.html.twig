@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% block title %}Wyświetl klienta{% endblock %}
+{% block titleMenu %}Wyswietl klienta{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+
+            <h2 class="material-heading">Wyświetl klienta</h2>
+
+            {% block floatingIcon %}
+                <div class="material-floating-button position-fix-left">
+                    <a href="{{ path('create_customer') }}" class="material-lower-shadow material-btn-effect"><span class="fas fa-plus fa-fw"></span></a>
+                </div>
+            {% endblock %}
+
+            {% for customer in customerData %}
+                <div class="read-data read-data-margin">
+                    <div class="material-box box-flex box-size-70">
+                        <p>ID</p>
+                        <p>{{ customer.id }}</p>
+                    </div>
+
+                    <div class="material-box box-flex box-size-70">
+                        <p>Imię</p>
+                        <p>{{ customer.firstName }}</p>
+                    </div>
+
+                    <div class="material-box box-flex box-size-70">
+                        <p>Nazwisko</p>
+                        <p>{{ customer.lastName }}</p>
+                    </div>
+
+                    <div class="material-box box-flex box-size-70">
+                        <p>Email</p>
+                        <p>{{ customer.email }}</p>
+                    </div>
+
+                    <div class="material-box box-flex box-size-70">
+                        <p>Numer telefonu</p>
+                        <p>{{ customer.phoneNumber }}</p>
+                    </div>
+
+                    <div class="material-box box-flex box-size-70">
+                        <p>Kod pocztowy</p>
+                        <p>{{ customer.postCode }}</p>
+                    </div>
+
+                    <div class="material-box box-flex box-size-70">
+                        <p>Adres zamieszkania</p>
+                        <p>{{ customer.address }}</p>
+                    </div>
+
+                    <div class="material-box box-flex box-size-70">
+                        <p>Samochody</p>
+                        <p>
+                            {% for car in customer.car %}
+                                <a href="#">{{ car.registration }}</a>,
+                            {% endfor %}
+                        </p>
+                    </div>
+
+                    <div class="material-floating-button">
+                        <a href="{{ path('create_car', {'customer': customer.id}) }}" class="material-btn-effect"><span class="fas fa-car fa-fw"></span></a>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </section>
+{% endblock %}

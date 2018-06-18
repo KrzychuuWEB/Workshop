@@ -23,8 +23,8 @@
                         </div>
 
                         <div class="search-bar">
-                            <form class="search-form">
-                                <input type="text" placeholder="Wpisz rejestrację">
+                            <form class="search-form" method="post" action="{{ path('find_car') }}">
+                                <input type="text" placeholder="Wpisz rejestrację" name="searchRegistration">
                                 <label for="submit-search"><span class="fas fa-search fa-fw"></span></label>
                                 <input id="submit-search" type="submit" hidden>
 
@@ -40,11 +40,11 @@
 
                         <div class="avatar-menu">
                             <span class="avatar" id="open-account-menu">
-                                K
+                                {{ app.user.username|first|upper }}
                             </span>
 
                             <ol class="account-menu material-shadow">
-                                <li><a href="#" class="material-btn-effect"><span class="fas fa-user fa-fw"></span>{{ app.user.username }}</a></li>
+                                <li><a href="{{ path('read_user', {'slug': app.user.username}) }}" class="material-btn-effect"><span class="fas fa-user fa-fw"></span>{{ app.user.username }}</a></li>
                                 <li><a href="#" class="material-btn-effect"><span class="fas fa-at fa-fw"></span>{{ app.user.email }}</a></li>
                                 <li><a href="#" class="material-btn-effect"><span class="fas fa-wrench fa-fw"></span>Mechanik</a></li>
                                 <li><a href="{{ path('logout') }}" class="material-btn-effect"><span class="fas fa-sign-out-alt fa-fw"></span>Wyloguj się</a></li>
@@ -62,7 +62,8 @@
 
                         <ol>
                             <li><a id="index-menu" href="{{ path('index') }}" class="material-btn-effect"><span class="fas fa-home fa-fw"></span>Strona główna</a></li>
-                            <li><a id="createcar-menu" href="{{ path('create_car') }}" class="material-btn-effect"><span class="fas fa-plus fa-fw"></span>Dodaj samochód</a></li>
+                            <li><a id="createcustomer-menu" href="{{ path('create_customer') }}" class="material-btn-effect"><span class="fas fa-address-book fa-fw"></span>Dodaj klienta</a></li>
+                            <li><a id="findcustomer-menu" href="{{ path('find_customer') }}" class="material-btn-effect"><span class="fas fa-search fa-fw"></span>Znajdz klienta</a></li>
                             <li><span></span></li>
                             {% if is_granted('ROLE_ADMIN') %}
                             <li><a id="createuser-menu" href="{{ path('create_user') }}" class="material-btn-effect"><span class="fas fa-user-plus fa-fw"></span>Dodaj użytkownika</a></li>
@@ -71,7 +72,6 @@
                             <li><span></span></li>
                             {% endif %}
                             <li><a id="showProfil-menu" href="{{ path('read_user', {'slug': app.user.username}) }}" class="material-btn-effect"><span class="fas fa-user fa-fw"></span>Pokaż mój profil</a></li>
-                            <li><a href="{{ path('create_car') }}" class="material-btn-effect"><span class="fas fa-cog fa-fw"></span>Ustawienia konta</a></li>
                             <li><a href="{{ path('logout') }}" class="material-btn-effect"><span class="fas fa-sign-out-alt fa-fw"></span>Wyloguj się</a></li>
                             <li><span></span></li>
                             <li><footer>Copyright &copy; Database 2018</footer></li>

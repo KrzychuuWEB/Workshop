@@ -4,7 +4,7 @@
 
 {% block body %}
     <section>
-        <div class="container" data-title="createcar-menu">
+        <div class="container">
 
             <h2 class="material-heading">Dodaj nowy samochód</h2>
 
@@ -17,68 +17,12 @@
                 </div>
             {% endblock %}
 
+            {{ form_row(form.customer) }}
+
             <div class="box-flex box-size-3">
                 {{ form_row(form.dateAdd, {'attr': {'value': "now"|date("Y-m-d") }}) }}
                 {{ form_row(form.timeAdd, {'attr': {'value': "now"|date('H:i')}}) }}
                 {{ form_row(form.vehicleType) }}
-            </div>
-
-            <div class="box-flex box-size-4">
-                <div class="material-box">
-                    <div class="material-field">
-                        <input type="text" required>
-                        <div class="field-underline"></div>
-                        <label>Imię</label>
-                        <span>Wpisane hasło jest nieprawidłowe</span>
-                    </div>
-                </div>
-
-                <div class="material-box">
-                    <div class="material-field">
-                        <input type="text" required>
-                        <div class="field-underline"></div>
-                        <label>Nazwisko</label>
-                        <span>Wpisane hasło jest nieprawidłowe</span>
-                    </div>
-                </div>
-
-                <div class="material-box">
-                    <div class="material-field">
-                        <input type="number" required>
-                        <div class="field-underline"></div>
-                        <label>Numer telefonu</label>
-                        <span>Wpisane hasło jest nieprawidłowe</span>
-                    </div>
-                </div>
-
-                <div class="material-box">
-                    <div class="material-field">
-                        <input type="text" required>
-                        <div class="field-underline"></div>
-                        <label>Kod pocztowy</label>
-                        <span>Wpisane hasło jest nieprawidłowe</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="box-flex box-size-2">
-                <div class="material-box">
-                    <div class="material-field">
-                        <input type="email" required>
-                        <div class="field-underline"></div>
-                        <label>Adres email</label>
-                        <span>Wpisane hasło jest nieprawidłowe</span>
-                    </div>
-                </div>
-
-                <div class="material-box">
-                    <div class="material-field">
-                        <input type="text" required>
-                        <div class="field-underline"></div>
-                        <label>Adres zamieszkania</label>
-                        <span>Wpisane hasło jest nieprawidłowe</span>
-                    </div>
-                </div>
             </div>
 
             <div class="box-flex box-size-3">
@@ -108,4 +52,12 @@
 
         </div>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        let customerID = {{ customerID }};
+    </script>
+    <script src="{{ asset('library/selectCustomer.js') }}"></script>
 {% endblock %}

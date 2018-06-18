@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Position;
 use App\Entity\User;
 use App\Form\Type\UserAddType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -45,7 +46,6 @@ class UserController extends Controller
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $loginForm = $form['username']->getData();
             $user = $form->getData();
             $password = $encoder->encodePassword($user, $form['password']->getData());
             $user->setPassword($password);

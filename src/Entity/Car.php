@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -92,6 +94,17 @@ class Car
      * @ORM\JoinColumn(nullable=false)
      */
     private $vehicleType;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Customer", inversedBy="car")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $customer;
+
+//    public function __construct()
+//    {
+//        $this->customer = new ArrayCollection();
+//    }
 
     public function getId()
     {
@@ -274,6 +287,18 @@ class Car
     public function setVehicleType(?VehicleType $vehicleType): self
     {
         $this->vehicleType = $vehicleType;
+
+        return $this;
+    }
+
+    public function getCustomer(): ?Customer
+    {
+        return $this->customer;
+    }
+
+    public function setCustomer(?Customer $customer): self
+    {
+        $this->customer = $customer;
 
         return $this;
     }

@@ -9,6 +9,7 @@
 namespace App\Form\Type;
 
 use App\Entity\Car;
+use App\Entity\Customer;
 use App\Entity\VehicleType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -67,6 +68,23 @@ class CarAddType extends AbstractType
                     'Tak' => 1,
                     'Nie' => 0,
                 ]
+            ])
+            ->add('customer', EntityType::class, [
+                'class' => Customer::class,
+                'query_builder' => function(EntityRepository $er)
+                {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy("c.id", 'ASC');
+                },
+                'choice_label' => function($customer)
+                {
+                    return 'ID: '.$customer->getId().
+                        ' | Imię: '.$customer->getFirstName().
+                        ' | Nazwisko: '.$customer->getLastName().
+                        ' | Numer Telefonu: '.$customer->getPhoneNumber().
+                        ' | Adres: '.$customer->getAddress();
+                },
+                'label' => 'Klient',
             ])
         ;
     }

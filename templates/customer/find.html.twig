@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %}Znajdz klienta{% endblock %}
+{% block titleMenu %}Znajdz klienta{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container" data-title="findcustomer-menu">
+
+            <h2 class="material-heading">Znajdz klienta</h2>
+
+            <form method="post" action="{{ path('find_customer') }}">
+                <div class="material-box box-size-70">
+                    <div class="material-field">
+                        <input type="text" name="find_customer" required">
+                        <div class="field-underline"></div>
+                        <label>Nazwisko klienta</label>
+                        <span>Podany klient nie istnieje!</span>
+                    </div>
+                </div>
+
+
+                {% block floatingIcon %}
+                    <div class="material-floating-button position-fix-left">
+                        <button class="material-lower-shadow material-btn-effect"><span class="fas fa-search fa-fw"></span></button>
+                    </div>
+                {% endblock %}
+            </form>
+
+        </div>
+    </section>
+{% endblock %}

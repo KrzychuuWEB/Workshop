@@ -1,7 +1,7 @@
 {% block form_row %}
     {% spaceless %}
         <div class="material-box">
-            <div class="material-field">
+            <div class="material-field {{ form_errors(form) }}">
                 {{ form_widget(form) }}
                 <div class="field-underline"></div>
                 {{ form_label(form) }}
@@ -10,3 +10,11 @@
         </div>
     {% endspaceless %}
 {% endblock form_row %}
+
+{% block form_errors %}
+    {% if errors|length > 0 %}
+        {% for error in errors %}
+            {{ error.message }}
+        {% endfor %}
+    {% endif %}
+{% endblock form_errors %}

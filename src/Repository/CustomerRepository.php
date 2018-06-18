@@ -19,6 +19,17 @@ class CustomerRepository extends ServiceEntityRepository
         parent::__construct($registry, Customer::class);
     }
 
+    public function findCustomerByLastName($lastName)
+    {
+        return $this->createQueryBuilder('c')
+            ->innerJoin("c.car", "cu")
+            ->addSelect('cu')
+            ->where('c.lastName = :lastName')
+            ->setParameter('lastName', $lastName)
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Customer[] Returns an array of Customer objects
 //     */

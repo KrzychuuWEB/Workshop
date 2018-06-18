@@ -8,6 +8,68 @@
 
             <h2 class="material-heading">Przeglądanie samochodu</h2>
 
+            <div class="read-data read-data-margin">
+                <div class="material-box box-flex box-size-70">
+                    <p>ID</p>
+                    <p>{{ car.id }}</p>
+                </div>
+
+                <div class="material-box box-flex box-size-70">
+                    <p>Rejestracja</p>
+                    <p>{{ car.registration }}</p>
+                </div>
+
+                <div class="material-box box-flex box-size-70">
+                    <p>Data dodania</p>
+                    <p>{{ car.dateAdd|date('Y-m-d') }}</p>
+                </div>
+
+                <div class="material-box box-flex box-size-70">
+                    <p>Czas dodania</p>
+                    <p>{{ car.timeAdd|date('H:i') }}</p>
+                </div>
+
+                <div class="material-box box-flex box-size-70">
+                    <p>Marka</p>
+                    <p>{{ car.mark }}</p>
+                </div>
+
+                <div class="material-box box-flex box-size-70">
+                    <p>Model</p>
+                    <p>{{ car.model }}</p>
+                </div>
+
+                <div class="material-box box-flex box-size-70">
+                    <p>Numer silnika</p>
+                    <p>{{ car.engineNumber }}</p>
+                </div>
+
+                <div class="material-box box-flex box-size-70">
+                    <p>Numer podwozia</p>
+                    <p>{{ car.bodyNumber }}</p>
+                </div>
+
+                <div class="material-box box-flex box-size-70">
+                    <p>Pojemność</p>
+                    <p>{{ car.capacity }}</p>
+                </div>
+
+                <div class="material-box box-flex box-size-70">
+                    <p>Moc silnika</p>
+                    <p>{{ car.enginePower }} KW</p>
+                </div>
+
+                <div class="material-box box-flex box-size-70">
+                    <p>Rok produkcji</p>
+                    <p>{{ car.productionYear|date('Y-m-d') }}</p>
+                </div>
+
+                <div class="material-box box-flex box-size-70">
+                    <p>Stan paliwa</p>
+                    <p>{{ car.fuelCondition }} l</p>
+                </div>
+            </div>
+
         </div>
     </section>
 {% endblock %}
